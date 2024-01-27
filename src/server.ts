@@ -23,7 +23,9 @@ app.get('/example', (req, res) => {
 });
 
 app.get("/v1/api/users", UserController.getAll)
-app.post("/v1/api/users", UserController.Create)
+app.get("/v1/api/users/:id", UserController.getUser)
+app.post("/v1/api/users", UserController.createUser)
+app.delete("/v1/api/users/:id", UserController.deleteUser)
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -33,5 +33,10 @@ e.g. It can exec `npm run start` & `npm run run` in terminal.
   },
 ```
 
-7. About dev test, how to test post method
-curl -X POST http://localhost:3000/users -H 'Content-Type: application/json' -d '{ "name": "ChunHao", "created_system": "test", "created_user": "test" }'
+7. About dev test, how to test post/delete method
+curl -X POST http://localhost:3000/v1/api/users -H 'Content-Type: application/json' -d '{ "name": "ChunHao", "created_system": "test", "created_user": "test" }'
+
+curl -X "DELETE" http://localhost:3000/v1/api/users/1
+
+8. About ORM
+Doc: https://orkhan.gitbook.io/typeorm/docs/example-with-express
