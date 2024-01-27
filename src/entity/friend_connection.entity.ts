@@ -1,13 +1,17 @@
 import { Entity, PrimaryGeneratedColumn, Column, Index } from 'typeorm';
 
 @Entity()
-export class User {
+export class FriendConnection {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  @Index("u-name")
-  name: string;
+  @Index("fc-uid")
+  user_id: number;
+
+  @Column()
+  @Index("fc-fuid")
+  friend_user_id: number;
 
   @Column()
   created_user: string;

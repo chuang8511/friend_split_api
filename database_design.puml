@@ -32,11 +32,16 @@ note top of UserGroup {
 }
 
 class UserGroup {
-    user_id : int
+    id: int
 }
 
-UserGroup ||--|{ User
 
+class UserGroupUserAssociation {
+    user_group_id
+    user_id
+}
+UserGroupUserAssociation ||--|{ UserGroup
+UserGroupUserAssociation ||--|{ User
 
 class AmountDetail {
     amount_paid : int
