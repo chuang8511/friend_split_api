@@ -1,8 +1,8 @@
 // server.ts
 import * as express from "express"
-import { User } from './entity/user.entity';
 import { myDataSource } from "./app-data-source"
 import { UserController } from "./controllers/UserController";
+import { UserGroupController } from "./controllers/UserGroupController";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,33 +18,14 @@ myDataSource
 
 app.use(express.json());
 
-app.get('/example', (req, res) => {
-  res.json({"tests": "test"})
-});
-
 app.get("/v1/api/users", UserController.getAll)
 app.get("/v1/api/users/:id", UserController.getUser)
-app.post("/v1/api/users", UserController.createUser)
-app.delete("/v1/api/users/:id", UserController.deleteUser)
+app.post("/v1/api/users", UserController.register)
+app.delete("/v1/api/users/:id", UserController.withdraw)
+app.post("/v1/api/users/friend", UserController.connectFriend)
+
+app.post("/v1/api/user_groups", UserGroupController.createGroup)
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-
-// createConnection().then(async (connection) => {
-//   app.get('/users', async (req, res) => {
-//     const userRepository = connection.getRepository(UserEntity);
-//     const users = await userRepository.find();
-//     res.json(users);
-//   });
-
-//   app.post('/users', async (req, res) => {
-//     const userRepository = connection.getRepository(UserEntity);
-//     const newUser = userRepository.create(req.body);
-//     await userRepository.save(newUser);
-//     res.json(newUser);
-//   });
-
-
-// });
