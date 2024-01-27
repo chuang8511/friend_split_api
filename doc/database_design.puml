@@ -1,0 +1,62 @@
+@startuml
+
+note top of User {
+    User needs to register a member by email.
+    The email cnanot be duplicate.
+}
+
+class User {
+    name : str
+}
+
+class Email {
+    user_id :int
+    email_address : str
+}
+
+User ||--|{ Email
+
+note top of FriendConnection {
+    User can connect others' email.
+}
+class FriendConnection {
+    user_id : int
+    friend_user_id: int
+}
+
+User ||--o{ FriendConnection
+User ||--o{ FriendConnection
+
+note top of UserGroup {
+    The amount_detail only can be added in a group.
+}
+
+class UserGroup {
+    user_id : int
+}
+
+UserGroup ||--|{ User
+
+
+class AmountDetail {
+    amount_paid : int
+    description : str
+}
+
+UserGroup ||--|{ AmountDetail
+
+class PaidUser {
+    user_id
+    amount_paid
+}
+
+class SharedUser {
+    user_id
+    amount_shared
+}
+
+AmountDetail ||--|{ PaidUser
+AmountDetail ||--|{ SharedUser
+
+
+@enduml

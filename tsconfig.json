@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "lib": ["es5", "es6", "dom"],
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
+    },
+    // "compilerOptions": {
+    //   "target": "es6",
+    //   "module": "commonjs",
+    //   "outDir": "./dist",
+    //   "rootDir": "./src",
+    //   "strict": true,
+    //   "esModuleInterop": true,
+    //   "skipLibCheck": true,
+    //   "forceConsistentCasingInFileNames": true,
+    //   "moduleResolution": "node",
+    //   "resolveJsonModule": true,
+    //   "experimentalDecorators": true,
+    //   "emitDecoratorMetadata": true
+    // },
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+}
