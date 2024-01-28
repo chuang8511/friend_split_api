@@ -39,6 +39,8 @@ export class UserGroupController {
         
     }
 
+    // todo: add the users into the group.
+
     // todo: check the ORM syntax
     // static getUserGroups = async (req, res) => {
     //     var user_id = req.params.user_id

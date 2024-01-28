@@ -10,7 +10,7 @@ export class UserController {
     res.json(users) 
    }
 
-   static getUser =async (req, res) => {
+   static getUser = async (req, res) => {
     var id = req.params.id
     const results = await myDataSource.getRepository(User).findOneBy({
       id: id
