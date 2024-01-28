@@ -36,7 +36,14 @@ e.g. It can exec `npm run start` & `npm run run` in terminal.
 7. About dev test, how to test post/delete method
 curl -X POST http://localhost:3000/v1/api/users -H 'Content-Type: application/json' -d '{ "name": "ChunHao", "created_system": "test", "created_user": "test" }'
 
+test register amount detail
+curl -X POST http://localhost:3000/v1/api/accounts -H 'Content-Type: application/json' -d '{ "userIds": ["2", "3"], "paidUserId": "2", "totalAmount": 1000 }'
+
 curl -X "DELETE" http://localhost:3000/v1/api/users/1
 
 8. About ORM
 Doc: https://orkhan.gitbook.io/typeorm/docs/example-with-express
+About transaction, it require use transactionalEntityManager to save the ORM.
+
+9. About Node.js
+static method is similar to the class_method. We can call it without initialization.
