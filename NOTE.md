@@ -33,10 +33,17 @@ e.g. It can exec `npm run start` & `npm run run` in terminal.
   },
 ```
 
-7. About dev test, how to test post/delete method
+7. About dev e2e test
+register
 curl -X POST http://localhost:3000/v1/api/users -H 'Content-Type: application/json' -d '{ "name": "ChunHao", "created_system": "test", "created_user": "test" }'
 
-test register amount detail
+withdraw
+curl -X DELETE http://localhost:3000/v1/api/users/4
+
+connect friend
+curl -X POST http://localhost:3000/v1/api/users/friend -H 'Content-Type: application/json' -d '{ "id": "2", "friend_user_id": "3", "created_system": "test", "created_user": "test" }'
+
+register amount detail
 curl -X POST http://localhost:3000/v1/api/accounts -H 'Content-Type: application/json' -d '{ "userIds": ["2", "3"], "paidUserId": "2", "totalAmount": 1000 }'
 
 curl -X "DELETE" http://localhost:3000/v1/api/users/1
