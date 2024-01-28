@@ -50,5 +50,17 @@ export class equallyShareService {
         console.log(this.paidUsers)
         console.log(this.sharedUsers)
     }
+
+    getAmountDetail(): AmountDetail | undefined {
+        return this.amountDetail;
+    }
+    
+    getPaidUsers(): PaidUser[] | undefined {
+        return this.paidUsers;
+    }
+    
+    getSharedUsers(): SharedUser[] | undefined {
+        return this.sharedUsers;
+    }
     
 }
