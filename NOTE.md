@@ -7,6 +7,7 @@ $ nodenv local 14.17.4
 $ npm install knex -g
 $ knex migrate:make create_xxx_table
 $ npx knex migrate:latest
+update: we do not need it because it will migrate when it runs in TypeORM.
 
 3. About route
 - users route will be defined under users.js
@@ -54,3 +55,13 @@ About transaction, it require use transactionalEntityManager to save the ORM.
 
 9. About Node.js
 static method is similar to the class_method. We can call it without initialization.
+
+# About service layer architecture
+- Ref: 
+  - https://github.com/snielsson/simple-service-layer-architecture-for-node-express-apps/tree/master
+  - https://www.codementor.io/@evanbechtol/node-service-oriented-architecture-12vjt9zs9i
+
+# About HTTP decouple
+todo: please think about how to use it in the project.
+- Ref: 
+  - https://github.com/axios/axios
