@@ -2,12 +2,25 @@
     "compilerOptions": {
         "lib": ["es5", "es6", "dom"],
         "target": "es6",
+        "jsx": "react",
         "module": "commonjs",
         "moduleResolution": "node",
+        // to be checked
+        // If there is no esModuleInterop, it cannot render in HTML.
+        // It also influences the code of server.ts, which is weird.
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitAny": false,
+        "strict": true,
+        "isolatedModules": true,
+        "strictNullChecks": false,
+        "strictPropertyInitialization": false,
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
         "outDir": "./dist",
         "rootDir": "./src",
         "emitDecoratorMetadata": true,
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
     },
     // "compilerOptions": {
     //   "target": "es6",
@@ -24,7 +37,8 @@
     //   "emitDecoratorMetadata": true
     // },
     "include": [
-      "src/**/*.ts"
+      "src/**/*.ts", 
+      "src/**/*.tsx"
     ],
     "exclude": [
       "node_modules"

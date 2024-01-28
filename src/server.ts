@@ -1,12 +1,11 @@
-// server.ts
-import * as express from "express"
+import express from "express"
 import { myDataSource } from "./app-data-source"
 import { UserController } from "./controllers/UserController";
 import { UserGroupController } from "./controllers/UserGroupController";
 import { AccountingController } from "./controllers/AccountingController";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 myDataSource
     .initialize()
@@ -18,6 +17,10 @@ myDataSource
     })
 
 app.use(express.json());
+
+app.get('/example', (req, res) => {
+    res.json({"tests": "test"})
+  });
 
 // app.get("/v1/api/users", UserController.getAll)
 // app.get("/v1/api/users/:id", UserController.getUser)
