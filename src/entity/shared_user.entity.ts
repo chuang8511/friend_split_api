@@ -9,7 +9,11 @@ export class SharedUser {
     @Column()
     user_id: number;
 
+    @Index()
     @Column()
+    amount_detail_id: number;
+
+    @Column({ type: 'float' })
     amount_shared: number;
 
     @Column()

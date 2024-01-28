@@ -9,6 +9,10 @@ export class PaidUser {
     @Column()
     user_id: number;
 
+    @Index()
+    @Column()
+    amount_detail_id: number;
+
     @Column()
     amount_paid: number;
     
