@@ -19,8 +19,8 @@ myDataSource
 
 app.use(express.json());
 
-app.get("/v1/api/users", UserController.getAll)
-app.get("/v1/api/users/:id", UserController.getUser)
+// app.get("/v1/api/users", UserController.getAll)
+// app.get("/v1/api/users/:id", UserController.getUser)
 app.post("/v1/api/users", UserController.register)
 app.delete("/v1/api/users/:id", UserController.withdraw)
 app.post("/v1/api/users/friend", UserController.connectFriend)
