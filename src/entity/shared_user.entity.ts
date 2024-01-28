@@ -1,13 +1,16 @@
 import { Entity, PrimaryGeneratedColumn, Column, Index, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
-export class UserGroup {
+export class SharedUser {
     @PrimaryGeneratedColumn()
     id: number;
   
-    @Index("ug-name")
+    @Index()
     @Column()
-    name: string;
+    user_id: number;
+
+    @Column()
+    amount_shared: number;
 
     @Column()
     created_user: string;

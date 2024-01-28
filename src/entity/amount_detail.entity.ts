@@ -1,13 +1,16 @@
 import { Entity, PrimaryGeneratedColumn, Column, Index, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
-export class UserGroup {
+export class AmountDetail {
     @PrimaryGeneratedColumn()
     id: number;
   
-    @Index("ug-name")
+    @Index()
     @Column()
-    name: string;
+    user_group_id: number;
+
+    @Column()
+    amount_paid: number;
 
     @Column()
     created_user: string;
@@ -20,4 +23,5 @@ export class UserGroup {
 
     @UpdateDateColumn()
     updated_at: Date;
+
 }
