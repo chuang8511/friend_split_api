@@ -16,7 +16,7 @@ export class AccountingController {
         AccountingPersistence.save(shareService)
 
         // Todo modify this response
-        return res.send(200)
+        return res.send({ "message": "Succeed!"})
         
     }
 }
