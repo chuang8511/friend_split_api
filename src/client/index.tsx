@@ -1,10 +1,27 @@
 import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import FriendPageIndex from './friend_page';
+import Layout from './Layout';
+import NoPage from './NoPage';
+
 const App: React.FC = () => {
-  return <h1>Hello, TypeScript React!</h1>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout/>}>
+        {/* <Route path="/" element={<FriendPageIndex/>}> */}
+          <Route path="friends" element={<FriendPageIndex/>}/>
+          <Route/>
+          <Route/>
+          <Route path="*" element={<NoPage/>}/>
+        </Route>  
+      </Routes>
+    </BrowserRouter>
+  )
 };
 
-
-import { createRoot } from 'react-dom/client';
 const container = document.getElementById('root');
-const root = createRoot(container); // createRoot(container!) if you use TypeScript
+const root = createRoot(container);
 root.render(<App />);

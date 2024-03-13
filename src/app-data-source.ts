@@ -4,7 +4,7 @@ export const myDataSource = new DataSource({
     type: "postgres",
     host: "localhost",
     port: 5432,
-    username: "c.huang",
+    username: "chunhao",
     database: "splitdb_dev",
     entities: ["src/entity/*.ts"],
     logging: true,
