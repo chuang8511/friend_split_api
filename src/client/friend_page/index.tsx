@@ -1,25 +1,33 @@
 import React from "react";
-import "./style.css";
+import ItemView from "./components/friend_money_item";
+import OverallView from "./components/overall";
 
-interface Props {
-    imageSrc: string;
-    userName: string;
-    amount: number;
-    isOwed: boolean;
-}
-
-
-const ItemView: React.FC<Props> = ({ imageSrc, userName, amount, isOwed }) => {
+const FriendPageIndex: React.FC = () => {
     return (
-        <div className="item">
-            {/* <img src={imageSrc} alt={userName}/> */}
-            <div className="details">
-                <h2>{userName}</h2>
-                <p className={isOwed ? 'is-owed' : 'owing'}>{amount}</p>
-            </div>
-        </div>
+        <div>
+            <OverallView
+                owedAmount={1000}
+                owingAmount={1000}
+                />
+            <ul>
+                <li>
+                <ItemView
+                    imageSrc=''
+                    userName='ChunHao'
+                    amount={1000}
+                    isOwed={true}/>
+                </li>
+                <li>
+                <ItemView
+                    imageSrc=''
+                    userName='Anni'
+                    amount={1000}
+                    isOwed={false}/>
+                </li>
+            </ul>
+
+        </div> 
     )
 }
 
-
-export default ItemView;
+export default FriendPageIndex
