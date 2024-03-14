@@ -5,10 +5,10 @@ interface Props {
     userName: string;
     email: string;
     password: string;
-    onSubmit: (userName: string, email: string, password: string) => void;
+    onSubmit: (userName: string, email: string, password: string, event: React.FormEvent<HTMLFormElement>) => void;
 }
 
-const EmailAndPassword: React.FC<Props> = ({ userName: initUserName, email: initEmail, password: initPassword, onSubmit }) => {
+const SignUpForm: React.FC<Props> = ({ userName: initUserName, email: initEmail, password: initPassword, onSubmit }) => {
     const [userName, setUserName] = useState(initUserName)
     const [email, setEmail] = useState(initEmail)
     const [password, setPassword] = useState(initPassword)
@@ -25,27 +25,23 @@ const EmailAndPassword: React.FC<Props> = ({ userName: initUserName, email: init
         setPassword(event.target.value);
     };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        onSubmit(userName, email, password);
-    };
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => onSubmit(userName, email, password, e)} >
             <div>
-                <label>Your name:</label>
-                <input type="text" value={userName} onChange={handleUserNameChange} />
+                <label htmlFor="userName">Your name:</label>
+                <input id="userName" type="text" placeholder="ChunHao" value={userName} onChange={handleUserNameChange} />
             </div>
             <div className="">
-                <label>Email:</label>
-                <input type="email" value={email} onChange={handleEmailChange} />
+                <label htmlFor="email">Email:</label>
+                <input id="email" type="email" placeholder="xxxx@gmail.com" value={email} onChange={handleEmailChange} />
             </div>
             <div className="">
-                <label>Password:</label>
-                <input type="password" value={password} onChange={handlePasswordChange} />
+                <label htmlFor="password">Password:</label>
+                <input id="password" type="password" value={password} onChange={handlePasswordChange} />
             </div>
             <button type="submit">Submit</button>
         </form>
     );
 }
 
-export default EmailAndPassword;
+export default SignUpForm;

@@ -6,3 +6,7 @@ About frontend router
 About state
 - https://react.dev/learn/state-a-components-memory
   - this kind of component-specific memory is called state.
+
+
+About event
+- event.preventDefault(): prevent reloading the page.

@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import FriendPageIndex from './friend_page';
-import SignUpIndex from './sign_up_page';
+import SignUpIndex from './SignUpPage';
 import Layout from './Layout';
 import NoPage from './NoPage';
 
