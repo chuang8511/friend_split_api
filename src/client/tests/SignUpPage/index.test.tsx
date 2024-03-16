@@ -20,7 +20,7 @@ describe("SignUpIndex Component", () => {
 
     await Promise.resolve();
 
-    expect(mockFetch).toHaveBeenCalledWith("http://localhost:3001/api/signup", {
+    expect(mockFetch).toHaveBeenCalledWith("http://localhost:3001/v1/api/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -48,7 +48,7 @@ describe("SignUpIndex Component", () => {
 
     await Promise.resolve();
 
-    expect(mockFetch).toHaveBeenCalledWith("http://localhost:3001/api/signup", {
+    expect(mockFetch).toHaveBeenCalledWith("http://localhost:3001/v1/api/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
