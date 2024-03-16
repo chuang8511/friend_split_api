@@ -1,11 +1,10 @@
 import express from "express"
 import { myDataSource } from "./app-data-source"
-import { UserController } from "./controllers/UserController";
-import { UserGroupController } from "./controllers/UserGroupController";
-import { AccountingController } from "./controllers/AccountingController";
+import accountRouter from "./routes/account.route";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const V1 = "/v1/api"
 
 myDataSource
     .initialize()
@@ -18,19 +17,7 @@ myDataSource
 
 app.use(express.json());
 
-app.get('/example', (req, res) => {
-    res.json({"tests": "test"})
-  });
-
-// app.get("/v1/api/users", UserController.getAll)
-// app.get("/v1/api/users/:id", UserController.getUser)
-app.post("/v1/api/users", UserController.register)
-app.delete("/v1/api/users/:id", UserController.withdraw)
-app.post("/v1/api/users/friend", UserController.connectFriend)
-
-app.post("/v1/api/user_groups", UserGroupController.createGroup)
-
-app.post("/v1/api/accounts", AccountingController.saveAccountingResult)
+app.use(`${V1}/account`, accountRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
