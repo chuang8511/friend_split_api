@@ -3,11 +3,26 @@ import SignUpForm from "./components/SignUpForm";
 
 const SignUpIndex: React.FC = () => {
 
-    const handleSubmit = (userName: string, email: string, password: string, event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (userName: string, email: string, password: string, event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log("Submitted data:", { userName, email, password });
+        console.log("Submitted data:", { userName, email });
         
-        // Handle form submission logic here, e.g., sending data to the server
+        try {
+            const response = await fetch("http://localhost:3001/api/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ userName, email, password })
+            });
+            
+            if (!response.ok) {
+                throw new Error("Failed to save data");
+            }
+            console.log("Data saved successfully!");
+        } catch (error: any) {
+            console.error("Error saving data:", error.message);
+        }
     };
     
     return (
