@@ -8,7 +8,7 @@ const SignUpIndex: React.FC = () => {
         console.log("Submitted data:", { userName, email });
         
         try {
-            const response = await fetch("http://localhost:3001/v1/api/signup", {
+            const response = await fetch("http://localhost:3001/v1/api/account", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
