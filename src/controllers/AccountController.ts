@@ -24,11 +24,19 @@ export class AccountController {
         newAccount.password = password;
         
         try {
-            await newAccount.save();
-            res.status(201).json({ message: 'Account created successfully' });
+            const alreadyRegisteredAccount = await Account.findOne({
+                where: { email: email }
+              });
+            if (alreadyRegisteredAccount) {
+                res.status(200).json({ message: 'Account has been created' });
+            } else {
+                await newAccount.save();
+                res.status(201).json({ message: 'Account created successfully' });
+            }
+            
+            
         } catch (error) {
-            console.error('Error saving account:', error);
-            res.status(500).json({ message: 'Failed to create account' });
+            res.status(500).json({ message: 'Failed to connect DB' });
         }
 
     }

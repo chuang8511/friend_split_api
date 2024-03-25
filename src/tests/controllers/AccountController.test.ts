@@ -19,6 +19,7 @@ describe("AccountController", () => {
 
         const res = createResponse();
 
+        jest.spyOn(Account, "findOne").mockResolvedValueOnce(null);
         const saveMock = jest.fn().mockResolvedValueOnce(undefined);
         jest.spyOn(Account.prototype, "save").mockImplementationOnce(saveMock);
 
@@ -28,6 +29,23 @@ describe("AccountController", () => {
         expect(res.json).toHaveBeenCalledWith({ message: "Account created successfully" });
 
         
+    })
+
+    it("Fail to register an account because account is registered", async() => {
+      const req = createRequest({
+        userName: "testuser",
+        email: "test@example.com",
+        password: "password",
+      });
+
+      const res = createResponse();
+      const registeredAccount = new Account()
+      jest.spyOn(Account, "findOne").mockResolvedValueOnce(registeredAccount);
+      
+      await AccountController.register(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.json).toHaveBeenCalledWith({ message: 'Account has been created' });
     })
 
     it("Fail to register an account because of failure of saving data", async() => {
@@ -40,6 +58,7 @@ describe("AccountController", () => {
 
         const res = createResponse();
 
+        jest.spyOn(Account, "findOne").mockResolvedValueOnce(null);
         const saveMock = jest.fn().mockRejectedValueOnce(new Error("Save failed"));
         jest.spyOn(Account.prototype, "save").mockImplementationOnce(saveMock);
 
@@ -47,6 +66,6 @@ describe("AccountController", () => {
 
         expect(saveMock).toHaveBeenCalledWith();
         expect(res.status).toHaveBeenCalledWith(500);
-        expect(res.json).toHaveBeenCalledWith({ message: "Failed to create account" });
+        expect(res.json).toHaveBeenCalledWith({ message: "Failed to connect DB" });
     })
 })
