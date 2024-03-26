@@ -10,3 +10,7 @@ About state
 
 About event
 - event.preventDefault(): prevent reloading the page.
+
+About mock fetch
+- https://www.leighhalliday.com/mock-fetch-jest
+- https://jestjs.io/docs/bypassing-module-mocks

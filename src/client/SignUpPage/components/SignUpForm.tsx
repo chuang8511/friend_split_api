@@ -29,17 +29,17 @@ const SignUpForm: React.FC<Props> = ({ userName: initUserName, email: initEmail,
         <form onSubmit={(e) => onSubmit(userName, email, password, e)} >
             <div>
                 <label htmlFor="userName">Your name:</label>
-                <input id="userName" type="text" placeholder="ChunHao" value={userName} onChange={handleUserNameChange} />
+                <input id="userName" type="text" placeholder="ChunHao" value={userName} onChange={handleUserNameChange} data-testid="userName-input" required />
             </div>
             <div className="">
                 <label htmlFor="email">Email:</label>
-                <input id="email" type="email" placeholder="xxxx@gmail.com" value={email} onChange={handleEmailChange} />
+                <input id="email" type="email" placeholder="xxxx@gmail.com" value={email} onChange={handleEmailChange} data-testid="email-input" required />
             </div>
             <div className="">
                 <label htmlFor="password">Password:</label>
-                <input id="password" type="password" value={password} onChange={handlePasswordChange} />
+                <input id="password" type="password" value={password} onChange={handlePasswordChange} data-testid="password-input" required/>
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" data-testid="sign-up-form-submit-btn">Submit</button>
         </form>
     );
 }

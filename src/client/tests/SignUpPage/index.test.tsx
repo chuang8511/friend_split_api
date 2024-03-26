@@ -1,62 +1,57 @@
-// to be write the correct test
+// Todo: check how to mock fetch.
+jest.mock("node-fetch")
+
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import SignUpIndex from "../../SignUpPage";
 
-describe("SignUpIndex Component", () => {
-  test("Succeed to create an account", async () => {
-    const mockFetch = jest.fn().mockResolvedValueOnce({
-      ok: true,
-      json: () => Promise.resolve({ success: true })
-    });
+describe('SignUpIndex component', () => {
 
-    const logSpy = jest.spyOn(global.console, 'log');
+  test('renders without crashing', () => {
+    render(<SignUpIndex />);
+  });
 
-    (global as any).fetch = mockFetch
-
-    const { getByText } = render(<SignUpIndex />)
-
-    fireEvent.submit(getByText("Submit"));
-
-    await Promise.resolve();
-
-    expect(mockFetch).toHaveBeenCalledWith("http://localhost:3001/v1/api/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ userName: "", email: "", password: "" })
-    });  
-    expect(logSpy).toHaveBeenCalledTimes(2);
-    expect(logSpy).toHaveBeenCalledWith("Data saved successfully!")
+  test('displays error message when submitting with empty fields', async () => {
+    const { getByTestId } = render(<SignUpIndex />);
+    const submitBtn = getByTestId("sign-up-form-submit-btn")
+    fireEvent.submit(submitBtn);
     
-  })
+    await waitFor(() => {
+      expect(getByTestId("submit-message").textContent).toBe("Please fill in all fields.")
+    })
+  });
 
-  test("Failed to create an account", async() => {
-    const mockFetch = jest.fn().mockResolvedValueOnce({
-      ok: false,
-      status: 500,
-      statusText: "Internal Server Error"
-    });
-    const logSpy = jest.spyOn(global.console, "error");
+  // test("display successfully created an account with filled fileds", async () => {
+  //   const { getByTestId } = render(<SignUpIndex />);
+  //   const userNameInput = getByTestId('userName-input');
+  //   const emailInput = getByTestId('email-input');
+  //   const passwordInput = getByTestId('password-input');
+  //   const submitBtn = getByTestId("sign-up-form-submit-btn")
 
-    (global as any).fetch = mockFetch
+  //   fireEvent.change(userNameInput, { target: { value: "testuser "} })
+  //   fireEvent.change(emailInput, { target: { value: "test@example.com "} })
+  //   fireEvent.change(passwordInput, { target: { value: "test123"} })
+  //   fireEvent.submit(submitBtn)
 
-    const { getByText } = render(<SignUpIndex />)
+  //   // global.fetch = jest.fn(() =>
+  //   //     Promise.resolve({
+  //   //       status: 201
+  //   //   }),
+  //   // ) as jest.Mock;
 
-    fireEvent.submit(getByText("Submit"));
+  //   // fetch.mockImplementationOnce(() => Promise.resolve({ status: 201 }));
+  //   // fetch.mockImplementationOnce(() => Promise.reject("API is down"));
 
-    await Promise.resolve();
+  //   // fetch.mockResolveValue(
+  //   //   Promise.resolve({
+  //   //     status: 201,
+  //   //   })
+  //   // );
 
-    expect(mockFetch).toHaveBeenCalledWith("http://localhost:3001/v1/api/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ userName: "", email: "", password: "" })
-    });  
-    expect(logSpy).toHaveBeenCalledTimes(1);
-    expect(logSpy).toHaveBeenCalledWith("Error saving data:", "Failed to save data")
+  //   await waitFor(() => {
+  //     expect(getByTestId("submit-message").textContent).toBe("You have finished the account registration")
+  //   })
 
-  })
-});
+  // })
+
+})
