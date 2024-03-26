@@ -10,6 +10,13 @@ const Layout = () => {
             <Link to="/">Top</Link>
           </li>
           <li>
+            <Link to="/sign_up">Sign up</Link>
+          </li>
+
+          {/* <li>
+            <Link to="/login">Log in</Link>
+          </li> */}
+          {/* <li>
             <Link to="/friends">Friends</Link>
           </li>
           <li>
@@ -20,7 +27,7 @@ const Layout = () => {
           </li>
           <li>
             <Link to="/account">Account</Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
 

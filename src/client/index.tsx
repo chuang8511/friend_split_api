@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import FriendPageIndex from './friend_page';
+import SignUpIndex from './SignUpPage';
 import Layout from './Layout';
 import NoPage from './NoPage';
 
@@ -11,7 +12,8 @@ const App: React.FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout/>}>
-        {/* <Route path="/" element={<FriendPageIndex/>}> */}
+        {/* <Route path="/" element={<SignUpIndex/>}> */}
+          <Route path="sign_up" element={<SignUpIndex/>}/>
           <Route path="friends" element={<FriendPageIndex/>}/>
           <Route/>
           <Route/>
