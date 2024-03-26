@@ -1,4 +1,4 @@
-// Todo: check how to mock fetch.
+// Todo: check how to mock fetch. //
 jest.mock("node-fetch")
 
 import React from "react";
