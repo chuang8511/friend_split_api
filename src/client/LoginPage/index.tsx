@@ -27,9 +27,9 @@ const LoginPage: React.FC = () => {
                 body: JSON.stringify({ email, password })
             })
 
-
             const status = response.status
-            const failureReason = response.body.reason
+            const apiData = await response.json();
+            const failureReason = apiData.data?.failureReason
 
             if (status == 201) {
                 setLoginResultMessage("Successfully Login")
@@ -39,11 +39,10 @@ const LoginPage: React.FC = () => {
                 setLoginResultMessage("No email is found")
 
             } else if (status == 403 && failureReason == "wrong password") {
-                const remainingTimes = response.body.times
-                setLoginResultMessage("Password is wrong, you still have " + remainingTimes + " tiems to try today")
+                const remainingTimes = apiData.data.times
+                setLoginResultMessage("Password is wrong, you still have " + remainingTimes + " times to try today")
 
-            }
-            else {
+            } else {
                 throw new Error("Failed to connect server")
             }
 

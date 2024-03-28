@@ -12,8 +12,8 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<Layout/>}> */}
-        <Route path="/" element={<LoginPage/>}>
+        <Route path="/" element={<Layout/>}>
+        {/* <Route path="/" element={<LoginPage/>}> */}
           <Route path="sign_up" element={<SignUpIndex/>}/>
           <Route path="login" element={<LoginPage/>} />
           {/* <Route path="friends" element={<FriendPageIndex/>}/> */}
