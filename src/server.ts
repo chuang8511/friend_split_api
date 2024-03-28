@@ -6,7 +6,7 @@ import accountRouter from "./routes/account.route";
 
 export const app = express();
 
-const allowedOrigins = ['https://example.com', 'http://localhost:3000'];
+const allowedOrigins = ['http://localhost:3000'];
 const corsOptions: cors.CorsOptions = {
     origin: function (origin, callback) {
       if (!origin || allowedOrigins.includes(origin)) {

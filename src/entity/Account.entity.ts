@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 
 @Entity()
 export class Account extends BaseEntity {
+    
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -31,8 +32,8 @@ export class Account extends BaseEntity {
         }
     }
 
-    async comparePassword(candidatePassword: string): Promise<boolean> {
-        return bcrypt.compare(candidatePassword, this.password);
+    async comparePassword(password: string): Promise<boolean> {
+        return bcrypt.compare(password, this.password);
     }
 
     @CreateDateColumn()

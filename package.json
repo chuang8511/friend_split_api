@@ -12,7 +12,7 @@
     "test-all": "jest",
     "test-b-silent": "jest --silent src/tests",
     "test-b": "jest src/tests",
-    "test-f": "jest src/client/tests",
+    "test-f": "jest --silent src/client/tests",
     "test:watch": "jest --watchAll",
     "presf": "npx webpack --config webpack.config.js --mode development ",
     "sf": "npx webpack serve --mode development",
